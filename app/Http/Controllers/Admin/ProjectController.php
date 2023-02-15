@@ -21,7 +21,7 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        $projects= Project::paginate();
+        $projects= Project::paginate(12);
         $types = Type::all();
         return view('admin.projects.index', compact('projects', 'types'));
 
