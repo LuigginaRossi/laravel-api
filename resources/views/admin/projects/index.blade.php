@@ -2,8 +2,10 @@
 
 @section('content')
     {{-- creo la mia tabella --}}
-            
-    <div class="container">
+    
+    
+    <div class="container py-5">
+        {{$projects->links()}}
 
         {{-- aggiungo bottone aggiungo categoria --}}
         <a  class="btn btn-warning my-4" href="{{route('admin.projects.create')}}">Create</a>
@@ -52,10 +54,11 @@
                     </div>
                 </div>
             @endforeach
+
         </div>
-
+        <div class="container py-5">{{$projects->links()}}</div>
+        
         {{-- src="{{Vite::asset('resources/img/dc-logo.png')}}" --}}
-
 
     </div>
     @endsection
