@@ -8,8 +8,10 @@ use Illuminate\Http\Request;
 
 class ProjectController extends Controller
 {
-    public function index(){
+    //aggiungere request $request
+    public function index(Request $request){
         $project= Project::paginate();
+        //faccio condizioni per query frontend
         return response()->json($project);
     }
 
