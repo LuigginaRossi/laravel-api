@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\PostController as PublicPostController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\ProjectController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -34,8 +35,8 @@ Route::middleware(['auth', 'verified'])
     //php artisan make:controller Admin/TypeController --resource
     //queste iniziano tutte con nomi :admin. rotte: admin/
     // php artisan route:list
-    Route::get('/contacts', [ContactController::class, "index"])->name('contacts.index');
-    Route::get('/contacts/{contact}', [ContactController::class, "show"])->name('contacts.show');
+    Route::get('/contacts', [ContactController::class, "index"]);
+    Route::get('/contacts/{contact}', [ContactController::class, "show"]);
 });
 
 //Utente non loggato:

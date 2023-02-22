@@ -48,9 +48,9 @@ class NewContact extends Mailable
         return new Content(
             // view: 'email.newContact',
             markdown: 'email.newContact',
-            // with: [
-            //      'url'=> route('admin.contact.show', $this->newContactData->id),
-            // ]
+            with: [
+                 'url'=> route('admin.contact.show', $this->newContactData->id),
+            ]
         );
     }
 
