@@ -12,38 +12,45 @@ use Illuminate\Queue\SerializesModels;
 class NewContact extends Mailable
 {
     use Queueable, SerializesModels;
+    //variabile pubblica che creo per salvare i dati
+    //public per passarla all'interno della view
+    public $newContactData;
 
     /**
      * Create a new message instance.
      *
      * @return void
-     */
-    public function __construct()
+     */                  //dato che ricevo dal ContactController
+    public function __construct($contactData)
     {
-        //public $contactData
+        $this->newContactData= $contactData;
     }
 
     /**
-     * Get the message envelope.
+     * Get the message envelope. Info Message.
      *
      * @return \Illuminate\Mail\Mailables\Envelope
      */
     public function envelope()
     {
         return new Envelope(
-            subject: 'Qualcuno ti ha contattato',
+            subject: 'Il lead {$this->newContactData->userName} ti ha contattato dal tuo sito!',
         );
     }
 
     /**
-     * Get the message content definition.
+     * Get the message content definition. Html =>view
      *
      * @return \Illuminate\Mail\Mailables\Content
      */
     public function content()
     {
         return new Content(
-            //markdown:: 'newContact',
+            // view: 'email.newContact',
+            markdown: 'email.newContact',
+            // with: [
+            //      'url'=> route('admin.contact.show', $this->newContactData->id),
+            // ]
         );
     }
 

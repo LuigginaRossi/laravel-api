@@ -3,8 +3,12 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Mail\NewContact;
 use App\Models\Contact;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 
 class ContactController extends Controller
@@ -24,6 +28,14 @@ class ContactController extends Controller
         }
 
         $contactData = Contact::create($data);
+
+        $admin= User::where('email', 'cicciopasticcio@gmail.com')->get();
+        
+        // $admins= User::where('role', 'admin')->get();
+        //$adminsEmail= $admins->pluck('emial);
+
+        //stringa o array di stringa: 'luigginavaldivia@gmail.com'/ $adminsEmail
+        Mail::to($admin)->send(new NewContact($contactData));
         return response()->json($contactData);
     }
 }

@@ -34,6 +34,8 @@ Route::middleware(['auth', 'verified'])
     //php artisan make:controller Admin/TypeController --resource
     //queste iniziano tutte con nomi :admin. rotte: admin/
     // php artisan route:list
+    Route::get('/contacts', [ContactController::class, "index"])->name('contacts.index');
+    Route::get('/contacts/{contact}', [ContactController::class, "show"])->name('contacts.show');
 });
 
 //Utente non loggato:
