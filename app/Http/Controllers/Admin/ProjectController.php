@@ -147,6 +147,7 @@ class ProjectController extends Controller
     public function destroy($id)
     {
         $project = Project::findOrfail($id);
+        $project->technologies()->detach();
         $project->delete();
 
         return redirect()->route('admin.projects.index');

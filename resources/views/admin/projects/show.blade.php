@@ -6,7 +6,15 @@
 
 
         <div class="card" style="width: 18rem;">
-            <img src="{{asset('/storage/'.  $project->cover_img)}}" class="card-img-top" alt="...">
+          @if(str_contains($project->cover_img, "https"))
+          <img class="card-img-top" src="{{$project->cover_img}}"
+          alt="">
+      
+          @else
+          
+              <img src="{{asset('/storage/'.  $project->cover_img)}}" class="card-img-top" alt="cover image">
+        
+          @endif
             <div class="card-body">
               <h5 class="card-title">Titolo:{{$project->name}}</h5>
               {{-- @dump($project->types) errore null --}}

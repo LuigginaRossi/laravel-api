@@ -23,7 +23,7 @@ class ProjectsTableSeeder extends Seeder
             Project::create([
                 "name" =>$faker->title(),
                 "description" =>$faker->realText(), 
-                "cover_img"=> 'projects/AT3B7UGeMSOXf9Hw8NrjWxPcfLZ8kraoER9DwkvY.jpg', 
+                "cover_img"=> 'https://picsum.photos/200/300', 
                 "github_link"=> 'https://laravel.com/docs/9.x/pagination#simple-pagination', 
                 "completed" =>true, 
                 "type_id" =>$types->random()->id,                

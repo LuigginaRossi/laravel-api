@@ -59,7 +59,14 @@
               </div>
             @enderror 
 
-            <img  class="img-thumbnail" src="{{asset('/storage/'. $project->cover_img)}}" alt="">
+            @if(str_contains($project->cover_img, "https"))
+                <img class="img-thumbnail mt-4"   class="card-img-top" src="{{$project->cover_img}}" alt="">
+
+            @else
+            
+                <img  class="img-thumbnail mt-4" src="{{asset('/storage/'.  $project->cover_img)}}" class="card-img-top" alt="cover image">
+          
+            @endif
           </div>
           
           {{-- completed input --}}
@@ -72,7 +79,7 @@
            {{-- technologies input --}}
           {{-- @dd($technologies) --}}
           <div class="py-3">
-            <div class="py-2">Technologies:</div>
+            <div class="py-2">Technologies: *</div>
             @foreach ($technologies as $technology)
               <div class="form-check">
                 <input class="form-check-input @error('technologies') is-invalid @enderror"

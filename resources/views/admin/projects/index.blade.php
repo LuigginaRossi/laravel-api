@@ -10,13 +10,23 @@
         {{-- aggiungo bottone aggiungo categoria --}}
         <a  class="btn btn-warning my-4" href="{{route('admin.projects.create')}}">Create</a>
 
-        <div class="row row-cols-1 row-cols-md-4 g-4">
+        <div class="row row-cols-1 row-cols-md-4 g-5">
             @foreach ($projects as $project)
                 <div class="col">
-                    <div class="card">
-                        <img src="{{asset('/storage/'.  $project->cover_img)}}" class="card-img-top" alt="cover image">
+                    <div class="card shadow">
+
+
+                        @if(str_contains($project->cover_img, "https"))
+                            <img class="card-img-top" src="{{$project->cover_img}}"
+                            alt="">
+                        
+                        @else
+                        
+                            <img src="{{asset('/storage/'.  $project->cover_img)}}" class="card-img-top" alt="cover image">
+                      
+                        @endif
                         <div class="card-body pt-5">
-                            <h5 class="card-title"> {{$project->name}}</h5>
+                            <h5 class="card-title"> {{Str::limit($project->name, 10)}}</h5>
                             
                             <h5 class="card-title"> {{ $project->type ? $project->type->name : ' ' }}</h5>
                             <p class="card-text">{{Str::limit($project->description , 30)}}</p>

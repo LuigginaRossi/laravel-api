@@ -35,6 +35,8 @@ class ContactController extends Controller
         //$adminsEmail= $admins->pluck('emial);
 
         //stringa o array di stringa: 'luigginavaldivia@gmail.com'/ $adminsEmail
+
+        // send() si aspetta di ricevere un istanza di una class Mailable
         Mail::to($admin)->send(new NewContact($contactData));
         return response()->json($contactData);
     }
